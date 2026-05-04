@@ -90,5 +90,12 @@ Top-level module for the full system. It connects the camera interface, clock ge
 
 
 ## Software Description
-After configuring the above hardware as a AXI4-Lite IP and doing the register configuration, we then began with the software design of selecting the filters through UART commands. Using a serial terminal, we sent the Zynq processor commands to switch between the selectable filters. Bit masking was used to update the specific bits in the mode control register.
+The software portion of this project focused on integrating a custom image filter into a hardware-based processing pipeline. The filter module was packaged as a custom AXI IP, allowing it to interface with the rest of the system through standard AXI protocols.
+
+This IP was then incorporated into a Vivado block design alongside the camera module. Within this design, the camera acts as the input source, streaming image data into the system, while the custom filter IP processes the data in real time.
+
+The use of AXI-based integration enabled seamless communication between components and provided a flexible, modular architecture for extending the design with additional processing blocks if needed.
+
+## Block Design
+<img width="1244" height="495" alt="image" src="https://github.com/user-attachments/assets/c9e6f9fd-0b0b-4cad-bade-374aac0be80c" />
 
