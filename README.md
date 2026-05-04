@@ -7,6 +7,9 @@ The design is based on juhshanhsiao's project ["Connect Camera to Zedboard"](htt
 
 The project began with basic camera to VGA video output and was then expanded to support per-pixel filters, neighborhood filters, image mirroring, and pause/resume functionality. The final system demonstrates how an FPGA can be used for hardware accelleration when it comes to video processing. 
 
+The complete Vivado and Vitis project files are hosted externally due to GitHub size limitations:
+[Download Full Project](https://drive.google.com/drive/folders/1VUFzXm7OVdBB3T3K-ocGLZ4gUPBZft1d)
+
 ## Project Objectives
 
  - Interface the ov7670 camera module with the Zedboard
