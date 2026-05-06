@@ -102,3 +102,6 @@ The use of AXI-based integration enabled seamless communication between componen
 ## Block Design
 <img width="1244" height="495" alt="image" src="https://github.com/user-attachments/assets/c9e6f9fd-0b0b-4cad-bade-374aac0be80c" />
 
+
+## Demo
+[Video Link](https://www.youtube.com/shorts/IY8pP2I_zEc).
