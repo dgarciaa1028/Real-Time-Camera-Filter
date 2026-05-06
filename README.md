@@ -104,4 +104,12 @@ The use of AXI-based integration enabled seamless communication between componen
 
 
 ## Demo
+<img width="492" height="656" alt="image" src="https://github.com/user-attachments/assets/111af30d-2bc1-496b-bc4f-11bb09d1da4f" />
 [Video Link](https://www.youtube.com/shorts/IY8pP2I_zEc).
+
+The demo video demonstrates the available image filters controlled through the Vitis serial terminal. Users can select different filters via a menu interface, as shown above, allowing real-time switching between filter modes.
+
+## Conclusion
+This project implements a real-time camera system with a custom AXI-based filter IP. Multiple image processing modes were developed, including RGB filters, invert, and grayscale. The system allows user control through a UART-based menu interface, enabling real-time selection of filters. The design successfully integrates both hardware and software components.
+
+One of the main challenges was debugging incorrect color output from the camera. Additionally, managing hardware connections and overall system integration required careful coordination.
