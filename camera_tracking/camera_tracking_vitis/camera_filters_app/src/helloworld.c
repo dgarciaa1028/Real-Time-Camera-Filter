@@ -1,0 +1,161 @@
+/******************************************************************************
+* Copyright (C) 2023 Advanced Micro Devices, Inc. All Rights Reserved.
+* SPDX-License-Identifier: MIT
+******************************************************************************/
+/*
+ * helloworld.c: simple test application
+ *
+ * This application configures UART 16550 to baud rate 9600.
+ * PS7 UART (Zynq) is not initialized by this application, since
+ * bootrom/bsp configures it to baud rate 115200
+ *
+ * ------------------------------------------------
+ * | UART TYPE   BAUD RATE                        |
+ * ------------------------------------------------
+ *   uartns550   9600
+ *   uartlite    Configurable only in HW design
+ *   ps7_uart    115200 (configured by bootrom/bsp)
+ */
+#include <stdio.h>
+#include <stdint.h>
+#include "platform.h"
+#include "xil_io.h"
+#include "xil_printf.h"
+#include "sleep.h"
+#include "xparameters.h"
+#define FILTER_BASE 0x43C00000
+
+static uint32_t mode = 0;
+
+static void write_filter(void)
+{
+    Xil_Out32(FILTER_BASE, mode);
+    xil_printf("filter register = 0x%03lX\r\n", mode);
+}
+
+static void camera_reset_pulse(void)
+{
+    mode &= 0xFFU;
+
+    Xil_Out32(FILTER_BASE, mode | 0x100U);
+    usleep(100000);
+
+    Xil_Out32(FILTER_BASE, mode);
+    usleep(100000);
+
+    xil_printf("Camera reset/resend pulse sent.\r\n");
+}
+
+static void print_menu(void)
+{
+    xil_printf("\r\n");
+    xil_printf("=============================================\r\n");
+    xil_printf("Camera Filter Controller\r\n");
+    xil_printf("0: Normal\r\n");
+    xil_printf("1: Grayscale\r\n");
+    xil_printf("2: Invert\r\n");
+    xil_printf("3: Black/White\r\n");
+    xil_printf("4: Red only\r\n");
+    xil_printf("5: Green only\r\n");
+    xil_printf("6: Blue only\r\n");
+    xil_printf("b: Blur\r\n");
+    xil_printf("s: Sharpen\r\n");
+    xil_printf("e: Edge\r\n");
+    xil_printf("p: Disable blur/sharpen/edge (frame filter off)\r\n");    xil_printf("m: Toggle horizontal mirror\r\n");
+    xil_printf("v: Toggle vertical mirror\r\n");
+    xil_printf("f: Toggle freeze frame\r\n");
+    xil_printf("c: Clear all effects\r\n");
+    xil_printf("h: Display menu\r\n");
+    xil_printf("=============================================\r\n");
+}
+
+int main(void)
+{
+    char cmd;
+
+    init_platform();
+
+    xil_printf("Camera AXI Filter Control Ready\r\n");
+    mode = 0;
+    write_filter();
+    print_menu();
+
+    while (1) {
+        xil_printf("\r\nEnter command: ");
+
+        do {
+            cmd = inbyte();
+        } while (cmd == '\r' || cmd == '\n');
+
+        xil_printf("%c\r\n", cmd);
+
+        switch (cmd) {
+            case '0': mode = (mode & ~0x7U) | 0U; break;
+            case '1': mode = (mode & ~0x7U) | 1U; break;
+            case '2': mode = (mode & ~0x7U) | 2U; break;
+            case '3': mode = (mode & ~0x7U) | 3U; break;
+            case '4': mode = (mode & ~0x7U) | 4U; break;
+            case '5': mode = (mode & ~0x7U) | 5U; break;
+            case '6': mode = (mode & ~0x7U) | 6U; break;
+
+            case 'p':
+            case 'P':
+                mode = (mode & ~(3U << 3)) | (0U << 3);
+                break;
+
+            case 'b':
+            case 'B':
+                mode = (mode & ~(3U << 3)) | (1U << 3);
+                break;
+
+            case 's':
+            case 'S':
+                mode = (mode & ~(3U << 3)) | (2U << 3);
+                break;
+
+            case 'e':
+            case 'E':
+                mode = (mode & ~(3U << 3)) | (3U << 3);
+                break;
+
+            case 'm':
+            case 'M':
+                mode ^= (1U << 5);
+                break;
+
+            case 'v':
+            case 'V':
+                mode ^= (1U << 6);
+                break;
+
+            case 'f':
+            case 'F':
+                mode ^= (1U << 7);
+                break;
+
+            case 'r':
+            case 'R':
+                camera_reset_pulse();
+                continue;
+
+            case 'c':
+            case 'C':
+                mode = 0;
+                break;
+
+            case 'h':
+            case 'H':
+                print_menu();
+                continue;
+
+            default:
+                xil_printf("Unknown command. Press h for menu.\r\n");
+                continue;
+        }
+
+        write_filter();
+    }
+
+    cleanup_platform();
+    return 0;
+}

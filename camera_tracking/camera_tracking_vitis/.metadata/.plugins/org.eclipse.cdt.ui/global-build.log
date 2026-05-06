@@ -1,0 +1,24 @@
+Nothing to build in platform 'camera_filters_plat'
+
+14:25:48 **** Incremental Build of configuration Debug for project camera_filters_app ****
+make all 
+make --no-print-directory pre-build
+a9-linaro-pre-build-step
+' '
+make --no-print-directory main-build
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -IC:/Users/sammy/Documents/CSUN/Work/ECE524/camera_tracking/camera_tracking_vitis/camera_filters_plat/export/camera_filters_plat/sw/camera_filters_plat/standalone_domain/bspinclude/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+'Finished building: ../src/helloworld.c'
+' '
+'Building target: camera_filters_app.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -LC:/Users/sammy/Documents/CSUN/Work/ECE524/camera_tracking/camera_tracking_vitis/camera_filters_plat/export/camera_filters_plat/sw/camera_filters_plat/standalone_domain/bsplib/lib -o "camera_filters_app.elf"  ./src/helloworld.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: camera_filters_app.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size camera_filters_app.elf  |tee "camera_filters_app.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  24133	   1144	  22584	  47861	   baf5	camera_filters_app.elf
+'Finished building: camera_filters_app.elf.size'
+' '

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<sdkproject:SdkProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdkproject="http://www.xilinx.com/sdkproject" name="camera_filters_app" location="C:/Users/sammy/Documents/CSUN/Work/ECE524/camera_tracking/camera_tracking_vitis/camera_filters_app" platform="C:/Users/sammy/Documents/CSUN/Work/ECE524/camera_tracking/camera_tracking_vitis/camera_filters_plat/export/camera_filters_plat/camera_filters_plat.xpfm" platformUID="xilinx:zedboard::0.0(custom)" systemProject="camera_filters_app_system" sysConfig="camera_filters_plat" runtime="C/C++" cpu="standalone_domain" cpuInstance="ps7_cortexa9_0" os="standalone" mssSignature="003a84de8c8bad39077a4e6babef99a2">
+  <configuration name="Debug" id="xilinx.gnu.armv7.exe.debug.1937864822">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+    <lastBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <configuration name="Release" id="xilinx.gnu.armv7.exe.release.528364444" dirty="true">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <template appTemplateName="hello_world"/>
+</sdkproject:SdkProject>

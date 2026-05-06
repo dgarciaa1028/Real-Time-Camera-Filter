@@ -1,0 +1,17 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Tue May  5 19:17:29 2026
+# Process ID: 28652
+# Current directory: C:/Users/dgarc/Documents/ECE520/Real-Time-Camera-Filter/camera_tracking
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent19152 C:\Users\dgarc\Documents\ECE520\Real-Time-Camera-Filter\camera_tracking\camera_tracking.xpr
+# Log file: C:/Users/dgarc/Documents/ECE520/Real-Time-Camera-Filter/camera_tracking/vivado.log
+# Journal file: C:/Users/dgarc/Documents/ECE520/Real-Time-Camera-Filter/camera_tracking\vivado.jou
+# Running On: Daniels-Envy, OS: Windows, CPU Frequency: 2688 MHz, CPU Physical cores: 12, Host memory: 33767 MB
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/dgarc/Documents/ECE520/Real-Time-Camera-Filter/camera_tracking/camera_tracking.xpr
+update_compile_order -fileset sources_1
+reset_project
